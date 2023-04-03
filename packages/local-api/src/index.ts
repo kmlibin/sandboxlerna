@@ -1,3 +1,3 @@
-export default () => {
-    console.log('server start')
+export const serve = (port: number, filename: string, dir: string) => {
+
 };
