@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = () => {
-    console.log('server start');
+exports.serve = void 0;
+const serve = (port, filename, dir) => {
 };
+exports.serve = serve;
