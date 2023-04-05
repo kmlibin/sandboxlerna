@@ -14,7 +14,7 @@ export const serve = (
 ) => {
   //initial setup for express server
   const app = express();
-
+  app.use(createCellsRouter(filename, dir));
   if (useProxy) {
     app.use(
       createProxyMiddleware("/", {
@@ -33,7 +33,6 @@ export const serve = (
     //don't want the entire path, just everything up to the build folder
     app.use(express.static(path.dirname(packagePath)));
   }
-  app.use(createCellsRouter(filename, dir));
   //wrapping express in our own promise, we will either resolve or reject.
   return new Promise<void>((resolve, reject) => {
     app.listen(port, "0.0.0.0", resolve).on("error", reject);
