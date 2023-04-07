@@ -13,6 +13,7 @@ const cells_1 = require("./routes/cells");
 const serve = (port, filename, dir, useProxy) => {
     //initial setup for express server
     const app = (0, express_1.default)();
+    app.use((0, cells_1.createCellsRouter)(filename, dir));
     if (useProxy) {
         app.use((0, http_proxy_middleware_1.createProxyMiddleware)("/", {
             target: "http://127.0.0.1:3000/",
@@ -30,7 +31,6 @@ const serve = (port, filename, dir, useProxy) => {
         //don't want the entire path, just everything up to the build folder
         app.use(express_1.default.static(path_1.default.dirname(packagePath)));
     }
-    app.use((0, cells_1.createCellsRouter)(filename, dir));
     //wrapping express in our own promise, we will either resolve or reject.
     return new Promise((resolve, reject) => {
         app.listen(port, "0.0.0.0", resolve).on("error", reject);
