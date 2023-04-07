@@ -1,6 +1,8 @@
 {
   "packages": [
-    "packages/*"
+      "packages/*",
+      "packages/local-api",
+      "packages/cli"
   ],
   "version": "0.0.0"
 }
