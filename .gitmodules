@@ -1,3 +1,0 @@
-[submodule "packages/local-client"]
-	path = packages/local-client
-	url = https://github.com/kmlibin/sandbox.git
